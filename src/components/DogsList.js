@@ -7,6 +7,13 @@ export default class DogsList extends Component {
     dogBreeds: null
   };
 
+  componentDidMount() {
+    fetch("https://dog.ceo/api/breeds/list/all")
+    .then(res => res.json())
+    .then(data => console.log("this data", data))
+    .catch(console.error);
+  }
+
   render () {
     return (
       <div className="dogs-list">
