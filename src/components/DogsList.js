@@ -10,8 +10,17 @@ export default class DogsList extends Component {
   componentDidMount() {
     fetch("https://dog.ceo/api/breeds/list/all")
     .then(res => res.json())
-    .then(data => console.log("this data", Object.keys(data.message)))
+    .then(data => {
+      const breeds = Object.keys(data.message)
+      this.updateBreeds(breeds);
+    })
     .catch(console.error);
+  }
+
+  updateBreeds(breeds) {
+    this.setState({
+      dogBreeds: breeds
+    })
   }
 
   render () {
